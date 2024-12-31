@@ -1,0 +1,243 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+    color: #333;
+    background: linear-gradient(rgba(159, 122, 234, 0.1), rgba(159, 122, 234, 0.1)),
+                url('./images/arkaplan.png') center/cover fixed;
+    /* Not: Ejderha resmini kendi sunucunuza yüklemenizi öneririm */
+}
+
+:root {
+    --primary-color: #6B46C1;    /* Ana mor renk */
+    --secondary-color: #9F7AEA;  /* Açık mor */
+    --text-color: #2D3748;      /* Koyu metin rengi */
+}
+
+header {
+    background-color: rgba(107, 70, 193, 0.95);
+    backdrop-filter: blur(5px);
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    padding: 1rem;
+    position: fixed;
+    width: 100%;
+    top: 0;
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+    justify-content: center;
+}
+
+nav ul li {
+    margin: 0 1rem;
+}
+
+nav ul li a {
+    color: white;
+    text-decoration: none;
+}
+
+main {
+    margin-top: 60px;
+    padding: 2rem;
+}
+
+section {
+    margin-bottom: 3rem;
+    padding: 2rem;
+    background-color: rgba(255, 255, 255, 0.9); /* Hafif saydam beyaz arka plan */
+    border-radius: 15px;
+    box-shadow: 0 4px 6px rgba(107, 70, 193, 0.1);
+}
+
+h1 {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+    color: #2c3e50;
+}
+
+h2 {
+    font-size: 2rem;
+    margin-bottom: 1.5rem;
+    color: #2c3e50;
+}
+
+.egitim-item, .deneyim-item {
+    margin-bottom: 1.5rem;
+}
+
+.yetenekler-list {
+    list-style: none;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1rem;
+}
+
+.yetenekler-list li {
+    background-color: var(--secondary-color);
+    color: white;
+    padding: 0.5rem 1rem;
+    border-radius: 15px;
+    text-align: center;
+    backdrop-filter: blur(5px);
+    box-shadow: 0 2px 4px rgba(107, 70, 193, 0.2);
+}
+
+@media (max-width: 768px) {
+    nav ul {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    nav ul li {
+        margin: 0.5rem 0;
+    }
+}
+
+/* Form stilleri güncelleme */
+.edit-form {
+    margin: 0 auto;  /* Üst margin'i kaldırdık */
+    padding: 1rem;
+    background-color: white;
+    border-radius: 15px;  /* Daha oval köşeler */
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    max-width: 600px;    /* Maksimum genişlik */
+    width: 80%;         /* Ana container'ın %80'i kadar genişlik */
+}
+
+.edit-form textarea {
+    width: 100%;
+    padding: 0.8rem;
+    margin-bottom: 1rem;
+    border: 2px solid var(--secondary-color);
+    border-radius: 12px;  /* Daha oval köşeler */
+    resize: vertical;     /* Sadece dikey yönde boyutlandırılabilir */
+    min-height: 80px;    /* Minimum yükseklik */
+    font-family: inherit;
+}
+
+.edit-form button {
+    background-color: var(--primary-color);
+    color: white;
+    border: none;
+    padding: 0.6rem 1.2rem;
+    border-radius: 25px;  /* Tam oval buton */
+    cursor: pointer;
+    font-size: 0.9rem;
+    transition: background-color 0.3s ease;
+    display: block;      /* Blok element */
+    margin: 0 auto;      /* Merkezde olması için */
+    min-width: 120px;    /* Minimum buton genişliği */
+}
+
+.edit-form button:hover {
+    background-color: var(--secondary-color);
+    transform: translateY(-1px);  /* Hover'da hafif yukarı kalkma efekti */
+}
+
+/* Text ve form pozisyonlaması için */
+#hakkimda-text, 
+#egitim-text, 
+#deneyim-text, 
+#yetenekler-text {
+    margin-bottom: 1rem;
+    padding: 1rem;
+    background-color: rgba(255, 255, 255, 0.95);
+    border-radius: 10px;
+    box-shadow: 0 2px 4px rgba(107, 70, 193, 0.1);
+}
+
+.yetenek-item {
+    background-color: var(--secondary-color);
+    color: white;
+    margin-bottom: 1rem;
+    border-radius: 15px;
+    overflow: hidden;
+}
+
+.yetenek-baslik {
+    padding: 0.8rem 1.2rem;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: background-color 0.3s ease;
+}
+
+.yetenek-baslik:hover {
+    background-color: var(--primary-color);
+}
+
+.yetenek-detay {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease;
+    background-color: rgba(255, 255, 255, 0.9);
+    color: var(--text-color);
+    padding: 0 1.2rem;
+}
+
+.yetenek-detay.active {
+    max-height: 500px;
+    padding: 1.2rem;
+}
+
+.yetenek-baslik::after {
+    content: '▼';
+    font-size: 0.8em;
+    transition: transform 0.3s ease;
+}
+
+.yetenek-baslik.active::after {
+    transform: rotate(180deg);
+}
+
+#yetenek-baslik {
+    width: 100%;
+    padding: 0.8rem;
+    margin-bottom: 0.5rem;
+    border: 2px solid var(--secondary-color);
+    border-radius: 12px;
+    font-family: inherit;
+}
+
+/* İletişim bölümü stilleri */
+.iletisim-item {
+    background-color: rgba(255, 255, 255, 0.95);
+    padding: 1.5rem;
+    border-radius: 15px;
+    box-shadow: 0 2px 4px rgba(107, 70, 193, 0.1);
+    margin-bottom: 1.5rem;
+}
+
+.iletisim-item p {
+    margin-bottom: 0.8rem;
+    font-size: 1.1rem;
+}
+
+.iletisim-item strong {
+    color: var(--primary-color);
+    margin-right: 0.5rem;
+}
+
+#email-input, #telefon-input {
+    width: 100%;
+    padding: 0.8rem;
+    margin-bottom: 1rem;
+    border: 2px solid var(--secondary-color);
+    border-radius: 12px;
+    font-family: inherit;
+}
+
+#email-input:focus, #telefon-input:focus {
+    outline: none;
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 2px rgba(107, 70, 193, 0.1);
+}

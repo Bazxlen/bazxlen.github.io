@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CV Sitem</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <nav>
+            <ul>
+                <li><a href="#hakkimda">Hakkımda</a></li>
+                <li><a href="#egitim">Eğitim</a></li>
+                <li><a href="#deneyim">Deneyim</a></li>
+                <li><a href="#yetenekler">Yetenekler</a></li>
+                <li><a href="#iletisim">İletişim</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section id="hakkimda">
+            <h1>Adınız Soyadınız</h1>
+            <p id="hakkimda-text">Kendiniz hakkında kısa bir açıklama</p>
+            <div class="edit-form">
+                <textarea id="hakkimda-input" rows="4"></textarea>
+                <button onclick="updateSection('hakkimda')">Güncelle</button>
+            </div>
+        </section>
+
+        <section id="egitim">
+            <h2>Eğitim</h2>
+            <div id="egitim-text" class="egitim-item">
+                <h3>Okul Adı</h3>
+                <p>Bölüm - Yıl</p>
+            </div>
+            <div class="edit-form">
+                <textarea id="egitim-input" rows="4"></textarea>
+                <button onclick="updateSection('egitim')">Güncelle</button>
+            </div>
+        </section>
+
+        <section id="deneyim">
+            <h2>İş Deneyimi</h2>
+            <div id="deneyim-text" class="deneyim-item">
+                <h3>Şirket Adı</h3>
+                <p>Pozisyon - Yıl</p>
+                <p>İş açıklaması</p>
+            </div>
+            <div class="edit-form">
+                <textarea id="deneyim-input" rows="4"></textarea>
+                <button onclick="updateSection('deneyim')">Güncelle</button>
+            </div>
+        </section>
+
+        <section id="yetenekler">
+            <h2>Yetenekler</h2>
+            <div id="yetenekler-text">
+                <div class="yetenekler-list">
+                    <!-- Yetenekler dinamik olarak buraya eklenecek -->
+                </div>
+            </div>
+            <div class="edit-form">
+                <input type="text" id="yetenek-baslik" placeholder="Yetenek kategorisi">
+                <textarea id="yetenek-detay" placeholder="Yetenek detaylarını yazın"></textarea>
+                <button onclick="addYetenek()">Yetenek Ekle</button>
+            </div>
+        </section>
+
+        <section id="iletisim">
+            <h2>İletişim</h2>
+            <div id="iletisim-text">
+                <div class="iletisim-item">
+                    <p><strong>Email:</strong> <span id="email-text">email@adresiniz.com</span></p>
+                    <p><strong>Telefon:</strong> <span id="telefon-text">+90 XXX XXX XX XX</span></p>
+                </div>
+            </div>
+            <div class="edit-form">
+                <input type="email" id="email-input" placeholder="Email adresiniz">
+                <input type="tel" id="telefon-input" placeholder="Telefon numaranız">
+                <button onclick="updateSection('iletisim')">Güncelle</button>
+            </div>
+        </section>
+    </main>
+</body>
+</html>
